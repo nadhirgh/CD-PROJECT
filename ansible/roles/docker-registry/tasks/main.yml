@@ -1,12 +1,10 @@
----
-# tasks file for docker-registry
-- name: Log into DockerHub
-  docker_login:
-    username: nadhirghn
-    password: 181jmt2261
+- name: Login to Dockerhub
+  become: yes
+  shell: docker login --username nadhirghn --password dckr_pat_VkER2y2M9lMsyFX9n7BnjgH2cDI
+  
 - name: Tag image
   become: yes
-  shell: docker tag nadhirghn/myapp-image nadhirghn/cd_project:latest
+  shell: docker tag myapp-image nadhirghn/cd_project:latest
   
 - name: Push image to DockerHub 
   become: yes
